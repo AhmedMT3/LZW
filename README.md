@@ -3,17 +3,6 @@
 
 A Java application implementing the **LZW (Lempel-Ziv-Welch)** algorithm to compress and decompress text and files. This program provides an interactive CLI for compressing or decompressing user-inputted text or files.
 
-## Table of Contents
-
-- [Features](#features)
-- [Requirements](#requirements)
-- [Usage](#usage)
-  - [Running the Program](#running-the-program)
-  - [Options](#options)
-- [LZW Algorithm Overview](#lzw-algorithm-overview)
-- [File Compression/Decompression](#file-compressiondecompression)
-- [Example](#example)
-
 ## Features
 
 - **Text Compression/Decompression**: Compress or decompress user-inputted text.
@@ -30,8 +19,8 @@ A Java application implementing the **LZW (Lempel-Ziv-Welch)** algorithm to comp
 
 1. Clone this repository.
    ```bash
-   git clone https://github.com/yourusername/LZWCompression.git
-   cd LZWCompression
+   git clone https://github.com/ahmedmt3/LZW.git
+   cd LZW
    ```
 
 2. Compile the program:
