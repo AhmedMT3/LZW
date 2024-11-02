@@ -15,6 +15,7 @@ public class App {
             System.out.println("2 => Decompress a text");
             System.out.println("3 => Compress a file");
             System.out.println("4 => Decompress a file");
+
             int choice = scanner.nextInt();
             scanner.nextLine();
             if (choice == 1) {
@@ -57,7 +58,7 @@ public class App {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                condition = false;
 
             } else if (choice == 4) {
                 try {
@@ -68,11 +69,11 @@ public class App {
 
                     // Decompress the file
                     LZW.decompressFile(compressedFile, decompressedFile);
-                    System.out.println("File decompressed successfully!");
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                condition = false;
             }
         }
         scanner.close();

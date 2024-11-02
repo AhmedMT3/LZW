@@ -1,0 +1,7 @@
+In computer science, Lempel-Ziv-Welch (LZW) is a universal lossless data compression algorithm. It is based on the Lempel-Ziv (LZ) family of algorithms and is widely used for data compression.
+
+The LZW algorithm builds a dictionary of sequences of input data, replacing repeated occurrences of data with a reference to a single copy of that data existing in the dictionary. The algorithm is particularly effective for data with many repeated patterns, such as graphics files and text.
+
+For example, in the input "ABABABA", the repeated sequences "AB" and "A" can be replaced with references to the dictionary, resulting in a compressed output that uses fewer bits than the original representation.
+
+LZW is used in many applications, including GIF image format and Unix compress command, making it a cornerstone of data compression techniques in software and digital media.
