@@ -1,13 +1,11 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +14,16 @@ import java.util.Map;
 public class LZW {
     private static final String currentDir = System.getProperty("user.dir");
 
-    // Checks if file exists
-    private boolean checkFileExist(File file) {
-        return file.exists();
+    private static String getOutputFileName(File input, boolean decompress) {
+        String fileName = input.getName();
+        String outputFileName;
+
+        if (fileName.contains(".")) {
+            fileName = fileName.substring(0, fileName.lastIndexOf('.'));
+        }
+
+        outputFileName = decompress ? fileName + ".txt" : fileName + ".lzw";
+        return outputFileName;
     }
 
     // Compress Method
@@ -88,55 +93,58 @@ public class LZW {
 
     // ========================[ Files ]=================================
 
-    public static void compressFile(String inputFile, String outputFile) throws IOException {
+    public static void compressFile(String inputFile) throws IOException {
         File input = new File(currentDir, inputFile);
         if (!input.exists()) {
             System.out.println("File not found: " + inputFile);
             return;
         }
+        String outputFileName = getOutputFileName(input, false);
 
-        String content = new String(java.nio.file.Files.readAllBytes(input.toPath()));
+        String content = new String(Files.readAllBytes(input.toPath()));
         List<Integer> compressedData = compress(content);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+        Writer fileWriter = new FileWriter(outputFileName);
+        try (BufferedWriter writer = new BufferedWriter(fileWriter)) {
             for (int code : compressedData) {
                 writer.write(code + ", "); // comma-separated
             }
         }
-        System.out.println("File compressed successfully to: " + outputFile);
+        System.out.println("File compressed successfully to: " + outputFileName);
     }
 
     // ================================
 
-    public static void decompressFile(String inputFile, String outputFile) throws IOException {
+    public static void decompressFile(String inputFile) throws IOException {
         File input = new File(currentDir, inputFile);
         if (!input.exists()) {
             System.out.println("File not found: " + input.getAbsolutePath());
             return;
         }
 
-        List<Integer> compressedData = new ArrayList<>();
+        List<Integer> fileContent = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
             String line = reader.readLine();
             if (line != null) {
                 String[] values = line.split(", "); // Split by comma
                 for (String value : values) {
                     if (!value.trim().isEmpty()) {
-                        compressedData.add(Integer.parseInt(value.trim())); // Parse each integer
+                        fileContent.add(Integer.parseInt(value.trim())); // Parse each integer
                     }
                 }
             }
         }
 
-        // Decompress the list of integers
-        String decompressedData = decompress(compressedData);
+        // Decompress fileContent
+        String decompressedData = decompress(fileContent);
 
-        // Write decompressed data to output file
-        File output = new File(currentDir, outputFile);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(output))) {
+        // Write to a file
+        String outputFileName = getOutputFileName(input, true);
+        File outputFile = new File(currentDir, outputFileName);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             writer.write(decompressedData);
         }
-        System.out.println("File decompressed successfully to: " + output.getAbsolutePath());
+        System.out.println("File decompressed successfully to: " + outputFile.getAbsolutePath());
     }
 
 }

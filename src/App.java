@@ -49,11 +49,9 @@ public class App {
                 try {
                     System.out.println("Enter the path for the input file:");
                     String inputFile = scanner.nextLine();
-                    System.out.println("Enter the path for the output compressed file:");
-                    String compressedFile = scanner.nextLine();
 
                     // Compress the file
-                    LZW.compressFile(inputFile, compressedFile);
+                    LZW.compressFile(inputFile);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -64,11 +62,9 @@ public class App {
                 try {
                     System.out.println("Enter the path for the compressed file:");
                     String compressedFile = scanner.nextLine();
-                    System.out.println("Enter the path for the output decompressed file:");
-                    String decompressedFile = scanner.nextLine();
 
                     // Decompress the file
-                    LZW.decompressFile(compressedFile, decompressedFile);
+                    LZW.decompressFile(compressedFile);
 
                 } catch (IOException e) {
                     e.printStackTrace();
