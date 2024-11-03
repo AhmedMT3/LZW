@@ -54,7 +54,7 @@ public class App {
                     LZW.compressFile(inputFile);
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println("Failed: " + e.getMessage());
                 }
                 condition = false;
 
@@ -67,9 +67,11 @@ public class App {
                     LZW.decompressFile(compressedFile);
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println("Failed: " + e.getMessage());
                 }
                 condition = false;
+            }else {
+                System.out.println("Invalid Choice!!");
             }
         }
         scanner.close();

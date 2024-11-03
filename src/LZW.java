@@ -26,7 +26,7 @@ public class LZW {
         return outputFileName;
     }
 
-    // Compress Method
+    // =======================[ Compress ]=======================
     public static List<Integer> compress(String text) {
         List<Integer> result = new ArrayList<>();
         int dicSize = 256;
@@ -62,7 +62,7 @@ public class LZW {
 
         return result;
     }
-
+    // =======================[ Decompress ]=======================
     public static String decompress(List<Integer> data) {
 
         int dicSize = 256;
