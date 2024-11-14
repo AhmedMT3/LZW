@@ -1,55 +1,83 @@
 
-# 📦 LZW Compression Program
+# 📚 LZW Compression and Decompression Program
 
-A Java app to compress and decompress text and files using the **LZW (Lempel-Ziv-Welch)** algorithm.
+### Welcome to the LZW Compression Program! 📦🔍
+
+This project is a Java-based application that uses the **LZW (Lempel-Ziv-Welch)** algorithm for compressing and decompressing text data. With it, you can reduce file sizes and work with encoded data directly.
 
 ## 🚀 Features
 
-- **Text Compression & Decompression**: Compress text or decompress encoded data.
-- **File Compression & Decompression**: Compress files to save space, decompress to restore content.
+- **Text Compression**: Easily compress a given text string into encoded format.
+- **Text Decompression**: Decode compressed data back to its original text.
+- **File Compression**: Compress an entire file using LZW to save space.
+- **File Decompression**: Restore a compressed file to its original content.
 
-## 🛠️ Usage
+## 🛠️ How to Use
 
-1. **Clone and Run**:
-   ```bash
-   git clone https://github.com/yourusername/LZW-Compression
-   cd LZW-Compression
-   javac src/App.java src/LZW.java
-   java -cp src App
-   ```
+### 1. **Clone the Repository**:
 
-2. **Choose an Option**:
-   - `1` ➡ Compress text
-   - `2` ➡ Decompress text
-   - `3` ➡ Compress file
-   - `4` ➡ Decompress file
-
-3. **Input Text or File Path**:
-   - For text, type the string to compress or paste encoded data.
-   - For files, place them in the `Playground` folder.
-
-## 📂 Folder Structure
-
-```plaintext
-LZW-Compression/
-├── .vscode/           # VSCode configuration files
-├── bin/               # Compiled classes output (if used)
-├── lib/               # Libraries
-├── Playground/        # Folder for input/output files
-├── src/               # Source code folder
-│   ├── App.java       # Main interface
-│   └── LZW.java       # Compression/decompression logic
-├── .gitattributes     # Git configuration
-├── .gitignore         # Git ignore file
-└── README.md          # Project guide
+```bash
+git clone https://github.com/AhmedMT3/LZW.git
+cd LZW
 ```
 
-## 📖 About LZW
+### 2. **Compile and Run**:
 
-LZW is a lossless algorithm, compressing repeated data patterns. It's commonly used in formats like **GIF images**.
-<br>
-Learn more about it [here](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch).
+```bash
+javac src/App.java src/LZW.java
+java -cp src App
+```
+
+### 3. **Select Options in the App**:
+After starting, you’ll see a menu with options:
+
+- `1` ➡ Compress a text
+- `2` ➡ Decompress a text
+- `3` ➡ Compress a file
+- `4` ➡ Decompress a file
+
+Simply enter the number for the action you want to perform! 👇
+
+## 📄 Example Usage
+
+**Compress a Text:**
+```text
+Enter text to Compress:
+This is a simple LZW compression test.
+```
+
+**Decompress a Text:**
+```text
+Enter the Encoded Data (Separated by Comma):
+65,97,98,99...
+```
+
+## 🗂️ Files and Output
+
+- **Text Input/Output**: Compresses and decompresses a text string directly in the console.
+- **File Input/Output**: Uses the `Playground` folder in the project directory for all file processing.
+  - **Compressed File**: Saves as `.lzw` file in the `Playground` folder.
+  - **Decompressed File**: Restores as `.txt` file.
+
+### ⚙️ Classes and Methods
+
+1. **App**: Main class for user interaction and menu-driven options.
+2. **LZW**: Handles core compression/decompression logic.
+
+## 📖 About the LZW Algorithm
+
+LZW is a lossless data compression algorithm, ideal for text compression. It works by encoding repeated sequences in data with short codes. You’ll find LZW used in popular formats like **GIF images**!
+
+## 🤖 Future Improvements
+
+- Add support for additional file formats
+- Improve error handling for invalid inputs
+- Enhance compression efficiency
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Happy compressing and decompressing! 🎉
+Happy Compressing and Decompressing! 🎉
